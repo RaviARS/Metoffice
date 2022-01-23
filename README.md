@@ -58,9 +58,9 @@
               }
           
               Using the climate api we can get the weather and climate data from metoffice,
-              if order_by is "date" it will be genrated the csv file (Path: Metoffice/farmsetu/weather_report) 
-              andpapulated the weather data into csv file.
-              if order_by is "ranked" only it will generated the csv file but not papulated the data into database 
+              if order_by is "date" it will be genrated the csv file (Path: Metoffice/farmsetu/weather_report)
+                which conatins the metoffice weather and climate information and papulated same data into database.
+              if order_by is "ranked" only it will generated the csv file but not papulated the data into database  
       
           Weather API:
     
