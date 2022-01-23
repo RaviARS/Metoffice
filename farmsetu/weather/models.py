@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Weather(models.Model):
+    """ Weather date model. """
     id = models.AutoField(primary_key=True)
     year = models.PositiveIntegerField(default=2000)
     jan = models.FloatField(default=0)
@@ -27,3 +28,8 @@ class Weather(models.Model):
     def __str__(self):
         return self.region
 
+
+class WeatherByRanked(models.Model):
+    """ Weather By Ranked model. """
+    # ToDo needs to be crate the  Weather Ranked model.
+    pass

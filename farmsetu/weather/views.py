@@ -60,20 +60,23 @@ class ClimateAPI(APIView):
                 write = csv.writer(climate_file)
                 write.writerows([climate.split("   ") for climate in climate_list[5:-1]])
 
-            # time.sleep(5)
-            # csv_file_path = "/home/ars/Documents/ARS/github/Metoffice/farmsetu/weather_report/"
-            with open(csv_file_path, ) as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
+            if order_by == 'date':
+                # time.sleep(5)
+                # csv_file_path = "/home/ars/Documents/ARS/github/Metoffice/farmsetu/weather_report/"
+                with open(csv_file_path, ) as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for row in reader:
 
-                    weather_obj = Weather(year=row['year'], jan=row[' jan'], feb=row[' feb'], mar=row[' mar'],
-                                          apr=row[' apr'], may=row[' may'], jun=row[' jun'], jul=row[' jul'],
-                                          aug=row[' aug'], sep=row[' sep'], oct=row[' oct'], nov=row[' nov'],
-                                          dec=row[' dec'], win=row['  win'], spr=row['  spr'], sum=row['  sum'],
-                                          aut=row['  aut'], ann=row['  ann'], region=region)
-                    weather_obj.save()
+                        weather_obj = Weather(year=row['year'], jan=row[' jan'], feb=row[' feb'], mar=row[' mar'],
+                                              apr=row[' apr'], may=row[' may'], jun=row[' jun'], jul=row[' jul'],
+                                              aug=row[' aug'], sep=row[' sep'], oct=row[' oct'], nov=row[' nov'],
+                                              dec=row[' dec'], win=row['  win'], spr=row['  spr'], sum=row['  sum'],
+                                              aut=row['  aut'], ann=row['  ann'], region=region)
+                        weather_obj.save()
 
-            msg = "successfully Added the  MetOffice weather data into the database."
+                msg = "Successfully Added the  MetOffice weather data into the database."
+                return Response({"response": msg}, status=status.HTTP_200_OK)
+            msg = "Successfully Generated climate csv."
             return Response({"response": msg}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(f"Bad request. Error {e}", status=status.HTTP_400_BAD_REQUEST)
